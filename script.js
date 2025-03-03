@@ -57,7 +57,7 @@ function generateChallan() {
 
     let totalSum = 0;
     let img = new Image();
-    img.src = "design.png"; // ✅ Ensure this image is in the same folder
+    img.src = "design.jpg"; // ✅ Ensure this image is in the same folder
 
     img.onload = function () {
         let yPositions = [77, 86.3, 95.6, 104.9, 114.2, 123.5, 132.8, 142.1, 151.4, 160.7, 170, 179.3];
@@ -65,7 +65,7 @@ function generateChallan() {
         for (let i = 0; i < takaEntries.length; i += groupSize) {
             if (i > 0) doc.addPage(); // ✅ Add a new page for each challan
 
-            doc.addImage(img, "PNG", 0, 0, 148, 210); // ✅ Set background on every page
+            doc.addImage(img, "JPEG", 0, 0, 148, 210, undefined, undefined, "FAST");
 
             doc.setFont("helvetica", "bold");
             doc.setFontSize(12);
