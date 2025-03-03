@@ -108,10 +108,13 @@ function generateChallan() {
         // ✅ Generate PDF
         let pdfBlob = doc.output("blob");
         let pdfURL = URL.createObjectURL(pdfBlob);
-        window.open(pdfURL, "_blank"); // ✅ Open in new tab
-    };
 
-    img.onerror = function () {
-        alert("❌ Error: Image not found. Make sure 'design.png' is in the correct folder.");
+        // Dynamically name the PDF with challan numbers
+        let startChallan = parseInt(document.getElementById("challanno").value) || 1;
+        let endChallan = challanNo - 1; // Last challan number after loop
+        // ✅ Universal Fix (Android & iOS)
+        doc.save(`${startChallan}-${endChallan}.pdf`);
+
+
     };
 }
