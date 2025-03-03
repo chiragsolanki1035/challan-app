@@ -8,10 +8,11 @@ document.getElementById("takancountt").addEventListener("input", function () {
     // Generate new textareas
     if (!isNaN(takaCount) && takaCount > 0) {
         for (let i = 0; i < takaCount; i++) {
-            let textarea = document.createElement("textarea");
-            textarea.classList.add("taka-entry"); // ✅ Assign correct class
-            textarea.placeholder = `Entry ${i + 1}`;
-            takaContainer.appendChild(textarea);
+            let input = document.createElement("input");
+            input.type = "number"; // Ensures only numeric values
+            input.classList.add("taka-entry"); // ✅ Assign correct class
+            input.placeholder = `${i + 1}`;
+            takaContainer.appendChild(input);
         }
     }
 });
@@ -45,7 +46,7 @@ function generateChallan() {
     let groupSize = parseInt(document.getElementById("entryperchallan").value) || 12;
 
     let takaEntries = Array.from(document.querySelectorAll(".taka-entry"))
-        .map(textarea => parseFloat(textarea.value) || 0)
+        .map(input => parseFloat(input.value) || 0)
         .filter(value => value > 0)
         .sort((a, b) => a - b); // ✅ Sorting in ascending order
 
@@ -59,7 +60,7 @@ function generateChallan() {
     img.src = "design.png"; // ✅ Ensure this image is in the same folder
 
     img.onload = function () {
-        let yPositions = [77,86.3,95.6,104.9,114.2,123.5,132.8,142.1,151.4,160.7,170,179.3];
+        let yPositions = [77, 86.3, 95.6, 104.9, 114.2, 123.5, 132.8, 142.1, 151.4, 160.7, 170, 179.3];
 
         for (let i = 0; i < takaEntries.length; i += groupSize) {
             if (i > 0) doc.addPage(); // ✅ Add a new page for each challan
@@ -85,7 +86,7 @@ function generateChallan() {
                 doc.text(`${group[j]}`, 30, yPositions[j]); // ✅ Print Meter Values
             }
             doc.text(groupTotal.toString(), 30, 188.6); // ✅ Print Total Meters for that page
-            doc.text(groupSize.toString(),80,93.2);
+            doc.text(groupSize.toString(), 80, 93.2);
             doc.text(groupTotal.toString(), 80, 105.2); // ✅ Print Total Meters for that page
 
             challanNo++; // ✅ INCREMENT CHALLAN NUMBER for next page
