@@ -14,8 +14,8 @@
     border-radius: 5px;
 }
 @media (max-width: 600px) {
-    body {
-        margin: 20px !important; /* Forces at least 20px margin on smaller screens */
+    html {
+        margin: 0px 20px !important; /* Forces at least 20px margin on smaller screens */
     }
 }
 
