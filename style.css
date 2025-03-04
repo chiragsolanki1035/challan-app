@@ -13,6 +13,11 @@
     background: #f9f9f9;
     border-radius: 5px;
 }
+@media (max-width: 600px) {
+    body {
+        margin: 20px !important; /* Forces at least 20px margin on smaller screens */
+    }
+}
 
 .box > div {
     border: 2px solid black;
@@ -59,6 +64,7 @@ button {
     cursor: pointer;
     font-weight: bold;
     margin-top: 10px;
+    transition: background 0.2s ease-in-out, transform 0.1s;
 }
 
 button:hover {
@@ -67,4 +73,5 @@ button:hover {
 
 button:active {
     background: #007a91;
+    transform: scale(0.98);
 }
